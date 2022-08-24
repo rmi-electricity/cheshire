@@ -1,9 +1,9 @@
-Cheshire: a Python Template Repository for RMI created by Catalyst
+Cheshire: a Python Template Repository for RMI created by Catalyst Cooperative
 =======================================================================================
 
 .. readme-intro
 
-.. image:: https://github.com/catalyst-cooperative/cheshire/workflows/tox-pytest/badge.svg
+.. image:: https://github.com/rmi-electricity/cheshire/workflows/tox-pytest/badge.svg
    :target: https://github.com/rmi-electricity/cheshire/actions?query=workflow%3Atox-pytest
    :alt: Tox-PyTest Status
 
@@ -13,9 +13,10 @@ Cheshire: a Python Template Repository for RMI created by Catalyst
 
 This template repository helps make new Python projects easier to set up and more
 uniform. It contains a lot of infrastructure surrounding a minimal Python package named
-``cheshire`` (the cat who isn't entirely there...). This template is mostly a copy of
-Catalyst's `cheshire <https://github.com/catalyst-cooperative/cheshire>`_ but with
-alterations for private work and alternative tools.
+``cheshire`` (the cat who isn't entirely there...). This template is mostly a lightly
+modified copy of Catalyst Cooperative's
+`cheshire <https://github.com/catalyst-cooperative/cheshire>`_ but with alterations
+for private work and alternative tools.
 
 Create a new repository from this template
 =======================================================================================
@@ -54,11 +55,10 @@ program like  ``pip``, ``conda``, or ``mamba``. Because we do not generally dist
 our work in this way, this issue is not so important, but we use this naming convention
 for internal consistency. It is often identical to the package
 name, but can also contain a prefix namespace that indicates the individual or
-organization responsible for maintaining the package. See :pep:`423`
-`PEP 423 <https://peps.python.org/pep-0423/>`__ for more on Python package naming
-conventions.  We are using the ``rmi`` namespace for the packages that we
-publish, so our ``dispatch`` package would become ``rmi.dispatch`` in the
-Python Package Index (PyPI) or on ``conda-forge``. Because we do not generally
+organization responsible for maintaining the package. See :pep:`423` for more on
+Python package naming conventions.  We are using the ``rmi`` namespace for the
+packages that we publish, so our ``dispatch`` package would become ``rmi.dispatch``
+in the Python Package Index (PyPI) or on ``conda-forge``. Because we do not generally
 distribute our work publicly, this issue is not so important, but we use this naming
 convention for internal consistency. The distribution name is determined
 by the ``name`` argument under ``[metadata]`` in ``setup.cfg``.

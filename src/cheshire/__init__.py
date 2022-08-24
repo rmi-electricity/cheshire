@@ -1,4 +1,7 @@
-"""A template repository for a Python package created by Catalyst Cooperative."""
+"""A template repository for a Python package.
+
+Created by Catalyst Cooperative, modified by RMI.
+"""
 import logging
 
 import pkg_resources

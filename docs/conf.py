@@ -8,8 +8,8 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
-from datetime import datetime
 import shutil
+from datetime import datetime
 from pathlib import Path
 
 import pkg_resources
@@ -60,7 +60,7 @@ autoapi_ignore = [
 autoapi_python_class_content = "both"
 autodoc_typehints = "description"
 # GitHub repo
-issues_github_path = "catalyst-cooperative/cheshire"
+issues_github_path = "rmi-electricity/cheshire"
 
 # In order to be able to link directly to documentation for other projects,
 # we need to define these package to URL mappings:
@@ -86,7 +86,7 @@ exclude_patterns = ["_build"]
 
 # The theme to use for HTML and HTML Help pages.
 master_doc = "index"
-html_theme = "furo"
+html_theme = "pydata_sphinx_theme"
 html_logo = "_static/Small_PNG-RMI_logo_PrimaryUse.PNG"
 html_icon = "_static/favicon-16x16.png"
 
