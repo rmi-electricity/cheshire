@@ -1,5 +1,6 @@
 [build-system]
-requires = ["setuptools<62", "pip>=21,<23", "wheel", "setuptools_scm"]
+requires = ["setuptools<64", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
 
@@ -10,4 +11,38 @@ include = "\\.pyi?$"
 
 [tool.isort]
 profile = "black"
-known_first_party = ["cheshire", "pudl", "pudl_catalog"]
+known_first_party = ["dispatch"]
+
+[tool.bandit]
+exclude_dirs = ["tests"]
+skips = ["B101"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+plugins = "numpy.typing.mypy_plugin"
+
+[[tool.mypy.overrides]]
+module = [
+    "addfips.*",
+    "coloredlogs.*",
+    "dask.*",
+    "datapackage.*",
+    "dbfread.*",
+    "geopandas.*",
+    "matplotlib.*",
+    "networkx.*",
+    "numba.*",
+    "numpy.*",
+    "pandas.*",
+    "pyarrow.*",
+    "seaborn.*",
+    "scipy.*",
+    "sklearn.*",
+    "sphinx.*",
+    "sqlalchemy.*",
+    "tableschema.*",
+    "timezonefinder.*",
+]
+ignore_missing_imports = true

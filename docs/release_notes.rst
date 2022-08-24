@@ -5,21 +5,18 @@ PACKAGE_NAME Release Notes
 .. _release-v0-2-0:
 
 ---------------------------------------------------------------------------------------
-0.2.0 (2022-XX-XX)
+0.2.0 (2022-08-24)
 ---------------------------------------------------------------------------------------
 
 What's New?
 ^^^^^^^^^^^
-* Briefly describe the substantial changes to the code in here when you make a PR.
-* That way and users we have documentation as to what's going on.
-* You can refer to the relevant pull request using the ``pr`` role: :pr:`1`
-* Don't hesitate to give shoutouts to folks who contributed like :user:`cmgosnell`
-* You can link to issues that were closed like this: :issue:`2,3,4`
+* Adapting to RMI internal project needs.
+* Removing coverage tracking functionality.
+* Docs are now built and deployed to github-pages.
+* Moving ``bandit`` and ``mypy`` configurations to ``pyproject.toml``.
+* Replacing ``setup.py`` with ``setup.cfg``.
+* Removing ``docker`` and PyPI distribution functionality.
 
-Bug Fixes
-^^^^^^^^^
-* It's good to make a note of any known bugs that are fixed by the release, and refer
-  to the relevant issues.
 
 Known Issues
 ^^^^^^^^^^^^

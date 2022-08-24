@@ -8,7 +8,7 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
-import datetime
+from datetime import datetime
 import shutil
 from pathlib import Path
 
@@ -24,15 +24,13 @@ DOCS_DIR = Path(__file__).parent.resolve()
 # importable path.
 
 # The full version, including alpha/beta/rc tags
-release = pkg_resources.get_distribution("catalystcoop.cheshire").version
+release = pkg_resources.get_distribution("rmi.cheshire").version
 
 # -- Project information -----------------------------------------------------
 
-project = "New Catalyst Python Project"
-copyright = (  # noqa: A001
-    f"202X-{datetime.date.today().year}, Catalyst Cooperative, CC-BY-4.0"
-)
-author = "Catalyst Cooperative"
+project = "New RMI Python Project"
+copyright = f"{datetime.today().year}, RMI, CC-BY-4.0"  # noqa: A001
+author = "RMI"
 
 # -- General configuration ---------------------------------------------------
 
@@ -59,7 +57,8 @@ autoapi_ignore = [
     "*_test.py",
     "*/package_data/*",
 ]
-
+autoapi_python_class_content = "both"
+autodoc_typehints = "description"
 # GitHub repo
 issues_github_path = "catalyst-cooperative/cheshire"
 
@@ -88,8 +87,8 @@ exclude_patterns = ["_build"]
 # The theme to use for HTML and HTML Help pages.
 master_doc = "index"
 html_theme = "furo"
-html_logo = "_static/catalyst_logo-200x200.png"
-html_icon = "_static/favicon.ico"
+html_logo = "_static/Small_PNG-RMI_logo_PrimaryUse.PNG"
+html_icon = "_static/favicon-16x16.png"
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the

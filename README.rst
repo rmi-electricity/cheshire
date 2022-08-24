@@ -4,36 +4,8 @@ Cheshire: a Python Template Repository for Catalyst
 .. readme-intro
 
 .. image:: https://github.com/catalyst-cooperative/cheshire/workflows/tox-pytest/badge.svg
-   :target: https://github.com/catalyst-cooperative/cheshire/actions?query=workflow%3Atox-pytest
+   :target: https://github.com/rmi-electricity/cheshire/actions?query=workflow%3Atox-pytest
    :alt: Tox-PyTest Status
-
-.. image:: https://github.com/catalyst-cooperative/cheshire/workflows/repo2docker/badge.svg
-   :target: https://github.com/catalyst-cooperative/cheshire/actions?query=workflow%3Arepo2docker
-   :alt: repo2docker Build Status
-
-.. image:: https://github.com/catalyst-cooperative/cheshire/workflows/docker-build-push/badge.svg
-   :target: https://github.com/catalyst-cooperative/cheshire/actions?query=workflow%3Adocker-build-push
-   :alt: Docker build status
-
-.. image:: https://img.shields.io/codecov/c/github/catalyst-cooperative/cheshire?style=flat&logo=codecov
-   :target: https://codecov.io/gh/catalyst-cooperative/cheshire
-   :alt: Codecov Test Coverage
-
-.. image:: https://img.shields.io/readthedocs/catalystcoop-cheshire?style=flat&logo=readthedocs
-   :target: https://catalystcoop-cheshire.readthedocs.io/en/latest/
-   :alt: Read the Docs Build Status
-
-.. image:: https://img.shields.io/pypi/v/catalystcoop.cheshire?style=flat&logo=python
-   :target: https://pypi.org/project/catalystcoop.cheshire/
-   :alt: PyPI Latest Version
-
-.. image:: https://img.shields.io/conda/vn/conda-forge/catalystcoop.cheshire?style=flat&logo=condaforge
-   :target: https://anaconda.org/conda-forge/catalystcoop.cheshire
-   :alt: conda-forge Version
-
-.. image:: https://img.shields.io/pypi/pyversions/catalystcoop.cheshire?style=flat&logo=python
-   :target: https://pypi.org/project/catalystcoop.cheshire/
-   :alt: Supported Python Versions
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
    :target: https://github.com/psf/black>
@@ -48,7 +20,7 @@ Create a new repository from this template
 
 * Choose a name for the new package that you are creating.
 * The name of the repository should be the same as the name of the new Python package
-  you are going to create. E.g. a repository at ``catalyst-cooperative/cheshire`` should
+  you are going to create. E.g. a repository at ``rmi-electricity/cheshire`` should
   be used to define a package named ``cheshire``.
 * Fork this template repository to create a new Python project repo.
   `See these instructions <https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template>`__.
@@ -211,37 +183,6 @@ look right so you can fix it.
   common problems like blanket ``# noqa`` annotations, as well as `language agnostic
   problems <https://github.com/pre-commit/pre-commit-hooks>`__ like accidentally
   checking large binary files into the repository or having unresolved merge conflicts.
-* `hadolint <https://github.com/AleksaC/hadolint-py>`__ checks Dockerfiles for errors
-  and violations of best practices. It runs as a pre-commit hook.
-
-Test Coverage
--------------
-* We use Tox and a the pytest `coverage <https://coverage.readthedocs.io/en/6.3.2/>`__
-  plugin to measure and record what percentage of our codebase is being tested, and to
-  identify which modules, functions, and individual lines of code are not being
-  exercised by the tests.
-* When you run ``tox`` or ``tox -e ci`` (which is equivalent) a summary of the test
-  coverage will be printed at the end of the tests (assuming they succeed). The full
-  details of the test coverage is written to ``coverage.xml``.
-* There are some configuration options for this process set in the ``.coveragerc`` file
-  in the top level directory of the repository.
-* When the tests are run via the ``tox-pytest`` workflow in GitHub Actions, the test
-  coverage data from the ``coverage.xml`` output is uploaded to a service called
-  `CodeCov <https://about.codecov.io/>`__ that saves historical data about our test
-  coverage, and provides a nice visual representation of the data -- identifying which
-  subpackages, modules, and individual lines of are being tested. For example, here are
-  the results
-  `for the cheshire repo <https://app.codecov.io/gh/catalyst-cooperative/cheshire>`__.
-* The connection to CodeCov is configured in the ``.codecov.yml`` YAML file.
-* In theory, we should be able to automatically turn CodeCov on for all of our GitHub
-  repos, and it just Just Work, but in practice we've had to turn it on in the GitHub
-  configuration one-by-one. Open source repositories are also supposed to be able to
-  upload to the CodeCov site without requiring authentication, but this also hasn't
-  worked, so thus far we've needed to request a new token for each repository. This
-  token is stored in ``.codecov.yml``.
-* Once it's enabled, CodeCov also adds a couple of test coverage checks to any pull
-  request, to alert us if a PR reduces overall test coverage (which we would like to
-  avoid).
 
 Documentation Builds
 --------------------
@@ -307,36 +248,4 @@ Actions to:
 
 * Run continuous integration using `tox <https://tox.wiki>`__ on several different
   versions of Python.
-* Build a Docker container with `repo2docker <https://github.com/marketplace/actions/repo2docker-action>`__
-  which encapsulates the conda environment defined by the top level ``environment.yml``
-  Note that for this action to succeed, you will need to
-  `create a personal access token on Docker Hub <https://docs.docker.com/docker-hub/access-tokens/>`__
-  and create new repository secrets to store your username and token called
-  ``DOCKERHUB_USERNAME`` and ``DOCKERHUB_TOKEN`` and make sure that the Docker Hub
-  repository you're trying to push to exists.
-* Build a Docker container directly and push it to Docker Hub using the
-  `docker-build-push action <https://github.com/docker/build-push-action>`__.
-
-About Catalyst Cooperative
-=======================================================================================
-`Catalyst Cooperative <https://catalyst.coop>`__ is a small group of data
-wranglers and policy wonks organized as a worker-owned cooperative consultancy.
-Our goal is a more just, livable, and sustainable world. We integrate public
-data and perform custom analyses to inform public policy (`Hire us!
-<https://catalyst.coop/hire-catalyst>`__). Our focus is primarily on mitigating
-climate change and improving electric utility regulation in the United States.
-
-Contact Us
-----------
-* For general support, questions, or other conversations around the project
-  that might be of interest to others, check out the
-  `GitHub Discussions <https://github.com/catalyst-cooperative/pudl/discussions>`__
-* If you'd like to get occasional updates about our projects
-  `sign up for our email list <https://catalyst.coop/updates/>`__.
-* Want to schedule a time to chat with us one-on-one? Join us for
-  `Office Hours <https://calend.ly/catalyst-cooperative/pudl-office-hours>`__
-* Follow us on Twitter: `@CatalystCoop <https://twitter.com/CatalystCoop>`__
-* More info on our website: https://catalyst.coop
-* For private communication about the project or to hire us to provide customized data
-  extraction and analysis, you can email the maintainers:
-  `pudl@catalyst.coop <mailto:pudl@catalyst.coop>`__
+* Build and publish docs to github-pages.

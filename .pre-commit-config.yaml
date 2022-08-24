@@ -16,6 +16,7 @@ repos:
     rev: v4.3.0
     hooks:
       - id: check-added-large-files # Don't accidentally commit giant files.
+        args: [ "--maxkb=9000" ]
       - id: check-merge-conflict # Watch for lingering merge markers.
       - id: check-yaml # Validate all YAML files.
       - id: check-case-conflict # Avoid case sensitivity in file names.
@@ -103,8 +104,8 @@ repos:
     rev: 1.7.4
     hooks:
       - id: bandit
-    # Currently no configuration...
-    # args: ['--configfile', '.bandit.yml']
+        args: ["-c", "pyproject.toml"]
+        additional_dependencies: ["bandit[toml]"]
 
   # Use type annotations to check types
   - repo: https://github.com/pre-commit/mirrors-mypy
