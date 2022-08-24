@@ -1,4 +1,4 @@
-Cheshire: a Python Template Repository for Catalyst
+Cheshire: a Python Template Repository for RMI created by Catalyst
 =======================================================================================
 
 .. readme-intro
@@ -13,7 +13,9 @@ Cheshire: a Python Template Repository for Catalyst
 
 This template repository helps make new Python projects easier to set up and more
 uniform. It contains a lot of infrastructure surrounding a minimal Python package named
-``cheshire`` (the cat who isn't entirely there...).
+``cheshire`` (the cat who isn't entirely there...). This template is mostly a copy of
+Catalyst's `cheshire <https://github.com/catalyst-cooperative/cheshire>`_ but with
+alterations for private work and alternative tools.
 
 Create a new repository from this template
 =======================================================================================
@@ -46,20 +48,20 @@ to import the package for use in a program, script, or notebook. E.g.:
 
   import cheshire
 
+
 The **distribution name** is the name that is used to install the software using a
-program like  ``pip``, ``conda``, or ``mamba``. It is often identical to the package
+program like  ``pip``, ``conda``, or ``mamba``. Because we do not generally distribute
+our work in this way, this issue is not so important, but we use this naming convention
+for internal consistency. It is often identical to the package
 name, but can also contain a prefix namespace that indicates the individual or
-organization responsible for maintaining the pacakge. See :pep:`423`
+organization responsible for maintaining the package. See :pep:`423`
 `PEP 423 <https://peps.python.org/pep-0423/>`__ for more on Python package naming
-conventions. We are using the ``catalystcoop`` namespace for the packages that we
-publish, so our ``pudl`` package becomes ``catalystcoop.pudl`` in the
-Python Package Index (PyPI) or on ``conda-forge``. Similarly the ``cheshire`` package
-becomes the ``catalystcoop.cheshire`` distribution. The distribution name is determined
-by the ``name`` argument in the call to ``setup()`` in ``setup.py``.
-
-.. code:: bash
-
-  pip install catalystcoop.cheshire
+conventions.  We are using the ``rmi`` namespace for the packages that we
+publish, so our ``dispatch`` package would become ``rmi.dispatch`` in the
+Python Package Index (PyPI) or on ``conda-forge``. Because we do not generally
+distribute our work publicly, this issue is not so important, but we use this naming
+convention for internal consistency. The distribution name is determined
+by the ``name`` argument under ``[metadata]`` in ``setup.cfg``.
 
 The package and distribution names are referenced in many of the files in the template
 repository, and they all need to be replaced with the name of your new package. You can
@@ -67,13 +69,12 @@ use ``grep -r`` to search recursively through all of the files for the word ``ch
 at the command line, or use the search-and-replace functionality of your IDE / text
 editor. The name of the package directory under ``src/`` will also need to be changed.
 
-* Supply any required tokens, e.g. for CodeCov
 * Rename the ``src/cheshire`` directory to reflect the new package name.
 * Search for ``cheshire`` and replace it as appropriate everywhere. Sometimes
-  this will be with a distribution name like ``catalystcoop.cheshire``
-  (the package as it appears for ``pip`` or ``PyPI``) and sometimes this will be the
-  importable package name (the name of the directory under ``src`` e.g. ``cheshire``)
-* Create the new project / package at Read The Docs.
+  this will be with a distribution name like ``rmi.cheshire``
+  (the package as it would appear for ``pip`` or ``PyPI``) and sometimes this will be
+  the importable package name (the name of the directory under ``src`` e.g.
+  ``cheshire``)
 
 What this template provides
 =======================================================================================
@@ -88,24 +89,23 @@ Python Package Skeleton
   interface to that module (``cli.py``) are included as examples.
 * Any files in the ``src/package_data/`` directory will also be packaged and deployed.
 * What files are included in or excluded from the package on the user's system is
-  controlled by the ``MANIFEST.in`` file and some options in the call to ``setup()`` in
-  ``setup.py``.
-* The CLI is deployed using a ``console_script`` entrypoint defined in ``setup.py``.
+  controlled by the ``MANIFEST.in`` file and some options in ``setup.cfg``.
+* The CLI is deployed using a ``console_script`` entrypoint defined in ``setup.cfg``.
 * We use ``setuptools_scm`` to obtain the package's version directly from ``git`` tags,
   rather than storing it in the repository and manually updating it.
-* ``README.rst`` is read in and used for the pacakge's ``long_description``. This is
-  what is displayed on the PyPI page for the package. For example, see the
+* ``README.rst`` is read in and used for the package's ``long_description``. This is
+  what is would be displayed on the PyPI page for the package. For example, see the
   `PUDL Catalog <https://pypi.org/project/catalystcoop.pudl-catalog/0.1.0/>`__ page.
 * By default we create at least three sets of "extras" -- additional optional package
-  dependencies that can be installed in special circumstances: ``dev``, ``docs```, and
+  dependencies that can be installed in special circumstances: ``dev``, ``doc```, and
   ``tests``. The packages listed there are used in development, building the docs, and
   running the tests (respectively) but aren't required for a normal user who is just
-  installing the package from ``pip`` or ``conda``.
+  installing the package to use rather than develop.
 * Python has recently evolved a more diverse community of build and packaging tools.
   Which flavor is being used by a given package is indicated by the contents of
   ``pyproject.toml``. That file also contains configuration for a few other tools,
-  including ``black`` and ``isort``, described in the section on linters and formatters
-  below.
+  including ``bandit``, ``black``, ``isort``, and ``mypy``, described in the section
+  on linters and formatters below.
 
 Pytest Testing Framework
 ------------------------
@@ -114,7 +114,8 @@ Pytest Testing Framework
 * Tests are split into ``unit`` and ``integration`` categories.
 * Session-wide test fixtures, additional command line options, and other pytest
   configuration can be added to ``tests/conftest.py``
-* Exactly what pytest commands are run during continuous integration controlled by Tox.
+* Exactly what pytest commands are run during continuous integration is controlled by
+  Tox.
 * Pytest can also be run manually without using Tox, but will use whatever your
   personal python environment happens to be, rather than the one specified by the
   package. Running pytest on its own is a good way to debug new or failing tests
@@ -125,8 +126,7 @@ Test Coordination with Tox
 * We define several different test environments for use with Tox in ``tox.ini``
 * `Tox <https://tox.wiki/en/latest/>`__ is used to run pytest in an isolated Python
   virtual environment.
-* We also use Tox to coordinate running the code linters, building the documentation,
-  and releasing the software to PyPI.
+* We also use Tox to coordinate running the code linters and building the documentation.
 * The default Tox environment is named ``ci`` and it will run the linters, build the
   documentation, run all the tests, and generate test coverage statistics.
 * ``tox.ini`` also contains sections near the bottom which configure the behavior of
@@ -146,17 +146,30 @@ Git Pre-commit Hooks
   checks on any code that is pushed to GitHub, and to apply standard code formatting
   to the PR in case it hasn't been run locally prior to being committed.
 
+Additional comments on using Pre-commit
+----------------------------------------------------
+Most git GUI tools work with pre-commit but don't work that well. The terminal based
+``git`` is usually the safer choice.
+
+For this to work you must have a terminal session inside your repository folder. To
+see what will be committed run ``git status``. To stage all files shown in red so
+they will be included in the commit, run ``git add .``.
+
+To make the commit run ``git commit -m '<commmit message>'``. If pre-commit hooks
+alter the files, you will need to add those fixed files again (you can see this when
+you run ``git status``) and then do the commit again.
+
 Code Formatting
 ---------------
 To avoid the tedium of meticulously formatting all the code ourselves, and to ensure as
-standard style of formatting and sytactical idioms across the codebase, we use several
+standard style of formatting and syntactical idioms across the codebase, we use several
 automatic code formatters, which run as pre-commit hooks. Many of them can also be
-integrated direclty into your text editor or IDE with the appropriate plugins. The
+integrated directly into your text editor or IDE with the appropriate plugins. The
 following formatters are included in the template ``.pre-commit-config.yaml``:
 
 * `Use only absolute import paths <https://github.com/MarcoGorelli/absolufy-imports>`__
 * `Standardize the sorting of imports <https://github.com/PyCQA/isort>`__
-* `Remove unneccesary f-strings <https://github.com/dannysepler/rm_unneeded_f_str>`__
+* `Remove unnecessary f-strings <https://github.com/dannysepler/rm_unneeded_f_str>`__
 * `Upgrade type hints for built-in types <https://github.com/sondrelg/pep585-upgrade>`__
 * `Upgrade Python syntax <https://github.com/asottile/pyupgrade>`__
 * `Deterministic formatting with Black <https://github.com/psf/black>`__
@@ -184,6 +197,11 @@ look right so you can fix it.
   problems <https://github.com/pre-commit/pre-commit-hooks>`__ like accidentally
   checking large binary files into the repository or having unresolved merge conflicts.
 
+Making ``bandit``, ``doc8``, ``flake8``, ``mypy``,  and ``rstcheck`` happy is work but
+not always useful work. Sometimes you can edit their configurations to be less strict,
+other times it makes sense to disable them. ``mypy`` can be a particular problem,
+especially when you use ``pandas`` or ``numpy``.
+
 Documentation Builds
 --------------------
 * We build our documentation using `Sphinx <https://www.sphinx-doc.org/en/master/>`__.
@@ -208,29 +226,15 @@ Documentation Builds
 
 Documentation Publishing
 ------------------------
-* We use the popular `Read the Docs <https://readthedocs.io>`__ service to host our
+* We use the `GitHub Pages <https://pages.github.com>`__ service to host our
   documentation.
-* When you open a PR, push to ``dev`` or ``main``, or tag a release, the associated
-  documentation is automatically built on Read the Docs.
-* There's some minimal configuration stored in the ``.readthedocs.yml`` file, but
-  setting up this integration for a new repository requires some setup on the Read the
-  Docs site.
-* Create an account on Read the Docs using your GitHub identity, go to "My Projects"
-  under the dropdown menu in the upper righthand corner, and click on "Import a
-  Project." It should list the repositories that you have access to on GitHub. You may
-  need to click on the Catalyst Cooperative logo in the right hand sidebar.
-* It will ask you for a project name -- this will become part of the domain name for the
-  documentation page on RTD and should be the same as the distribution name, but with
-  dots and underscores replaced with dashes. E.g. ``catalystcoop-cheshire`` or
-  ``catalystcoop-pudl-catalog``.
-* Under Advanced Settings, make sure you
-  `enable builds on PRs <https://docs.readthedocs.io/en/stable/pull-requests.html>`__.
-  This will add a check ensuring that the documentation has built successfully on RTD
-  for any PR in the repo.
-* Under the Builds section for the new project (repo) you'll need to tell it which
-  branches you want it to build, beyond the default ``main`` branch.
-* Once the repository is connected to Read the Docs, an initial build of the
-  documentation from the ``main`` branch should start.
+* When you open a PR or push to ``dev`` or ``main``, the associated
+  documentation is automatically built and stored in a ``gh-pages`` branch.
+* To make the documentation available, go to the repositories settings. Select
+  'Pages' under 'Code and automation', select 'Deploy from a branch' and then
+  select the ``gh-pages`` branch and then ``/(root)``, and click save.
+* The documentation should then be available at
+  https://rmi-electricity.github.io/<repo-name>/.
 
 Dependabot
 ----------

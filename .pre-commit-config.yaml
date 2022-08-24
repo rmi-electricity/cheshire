@@ -16,7 +16,7 @@ repos:
     rev: v4.3.0
     hooks:
       - id: check-added-large-files # Don't accidentally commit giant files.
-        args: [ "--maxkb=9000" ]
+        args: ["--maxkb=9000"]
       - id: check-merge-conflict # Watch for lingering merge markers.
       - id: check-yaml # Validate all YAML files.
       - id: check-case-conflict # Avoid case sensitivity in file names.
@@ -116,7 +116,6 @@ repos:
           - pytest
           - types-jinja2
           - types-setuptools
-        args: ["--strict"]
 
   # Check for errors in restructuredtext (.rst) files under the doc hierarchy
   - repo: https://github.com/PyCQA/doc8
@@ -132,12 +131,6 @@ repos:
       - id: rstcheck
         additional_dependencies: [sphinx]
         args: ["--config", "tox.ini"]
-
-  # Lint Dockerfiles for errors and to ensure best practices
-  - repo: https://github.com/AleksaC/hadolint-py
-    rev: v2.10.0
-    hooks:
-      - id: hadolint
 
   ########################################################################################
   # Custom local hooks

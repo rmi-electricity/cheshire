@@ -12,7 +12,7 @@ What's New?
 ^^^^^^^^^^^
 * Adapting to RMI internal project needs.
 * Removing coverage tracking functionality.
-* Docs are now built and deployed to github-pages.
+* Docs are now built and deployed to `GitHub Pages <https://pages.github.com>`__.
 * Moving ``bandit`` and ``mypy`` configurations to ``pyproject.toml``.
 * Replacing ``setup.py`` with ``setup.cfg``.
 * Removing ``docker`` and PyPI distribution functionality.

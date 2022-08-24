@@ -7,11 +7,13 @@ dependencies:
   - pip>=21,<23
   - python>=3.8,<3.11
   - setuptools<62
+  -
 
   # Packages specified in setup.cfg that need or benefit from binary conda packages
-  # - geopandas>=0.9,<0.11
-  # - pygeos>=0.10,<0.13  # Python wrappers for the GEOS spatial libraries
-  # - python-snappy>=0.6,<0.7  # Supports snappy compression in pyarrow/parquet
+  - bottleneck ~= 1.3
+  - numexpr ~= 2.8
+  - numpy >= 1.18.5,<2
+  - pandas >= 1.4,<1.5
 
   # Packages not specified in setup.cfg that provide optional, helpful binaries:
   # - numba>=0.55.1,<0.56  # numba speeds up some kinds of math by 100x
@@ -22,4 +24,4 @@ dependencies:
 
   # Use pip to install the package defined by this repo for development:
   - pip:
-      - --editable ./[dev,docs,tests,types]
+      - --editable ./[dev,doc,tests,types]
