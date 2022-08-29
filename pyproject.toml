@@ -6,12 +6,12 @@ build-backend = "setuptools.build_meta"
 
 [tool.black]
 line-length = 88
-target-version = ["py38", "py39", "py310"]
+target-version = ["py39", "py310"]
 include = "\\.pyi?$"
 
 [tool.isort]
 profile = "black"
-known_first_party = ["dispatch"]
+known_first_party = ["cheshire"]
 
 [tool.bandit]
 exclude_dirs = ["tests"]

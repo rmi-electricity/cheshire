@@ -1,13 +1,11 @@
 name: cheshire
 channels:
   - conda-forge
-  - defaults
 dependencies:
   # Packages required for setting up the environment
   - pip>=21,<23
   - python>=3.8,<3.11
   - setuptools<62
-  -
 
   # Packages specified in setup.cfg that need or benefit from binary conda packages
   - bottleneck ~= 1.3
