@@ -3,8 +3,7 @@
 Created by Catalyst Cooperative, modified by RMI.
 """
 import logging
-
-import pkg_resources
+from importlib.metadata import version
 
 # In order for the package modules to be available when you import the package,
 # they need to be imported here somehow. Not sure if this is best practice though.
@@ -16,7 +15,7 @@ __contact__ = "...@rmi.org"
 __maintainer__ = "Cheshire Cat"
 __license__ = "BSD 3-Clause License"
 __maintainer_email__ = "...@rmi.org"
-__version__ = pkg_resources.get_distribution("rmi.cheshire").version
+__version__ = version("rmi.cheshire")
 __docformat__ = "restructuredtext en"
 __description__ = "A template for Python package repositories."
 __long_description__ = """
