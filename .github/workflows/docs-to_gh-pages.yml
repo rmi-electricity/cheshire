@@ -9,8 +9,6 @@ jobs:
         run: |
           git fetch --prune --unshallow
           git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-          git describe --tags
-          git describe --tags $(git rev-list --tags --max-count=1)
       - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
