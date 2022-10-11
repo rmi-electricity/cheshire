@@ -2,6 +2,20 @@
 PACKAGE_NAME Release Notes
 =======================================================================================
 
+.. _release-v0-3-0:
+
+---------------------------------------------------------------------------------------
+0.3.0 (2022-XX-XX)
+---------------------------------------------------------------------------------------
+
+What's New?
+^^^^^^^^^^^
+* Switching coverage to `Coveralls <coveralls.io>`_.
+* Moving ``doc8``, ``pytest``, and ``rstcheck`` configs to ``pyproject.toml``.
+* Updates to ``docs-to_gh-pages.yml`` so it works with the version from
+  ``setuptools-scm``.
+
+
 .. _release-v0-2-0:
 
 ---------------------------------------------------------------------------------------

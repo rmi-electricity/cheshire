@@ -7,6 +7,13 @@ Cheshire: a Python Template Repository for RMI created by Catalyst Cooperative
    :target: https://github.com/rmi-electricity/cheshire/actions?query=workflow%3Atox-pytest
    :alt: Tox-PyTest Status
 
+.. image:: https://github.com/rmi-electricity/cheshire/workflows/docs/badge.svg
+   :target: https://rmi-electricity.github.io/cheshire/
+   :alt: GitHub Pages Status
+
+.. image:: https://coveralls.io/repos/github/rmi-electricity/cheshire/badge.svg
+   :target: https://coveralls.io/github/rmi-electricity/cheshire
+
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
    :target: https://github.com/psf/black>
    :alt: Any color you want, so long as it's black.
@@ -201,6 +208,23 @@ Making ``bandit``, ``doc8``, ``flake8``, ``mypy``,  and ``rstcheck`` happy is wo
 not always useful work. Sometimes you can edit their configurations to be less strict,
 other times it makes sense to disable them. ``mypy`` can be a particular problem,
 especially when you use ``pandas`` or ``numpy``.
+
+Test Coverage
+-------------
+* We use Tox and the pytest `coverage <https://coverage.readthedocs.io>`__
+  plugin to measure and record what percentage of our codebase is being tested, and to
+  identify which modules, functions, and individual lines of code are not being
+  exercised by the tests.
+* When you run ``tox`` or ``tox -e ci`` (which is equivalent) a summary of the test
+  coverage will be printed at the end of the tests (assuming they succeed). The full
+  details of the test coverage is written to ``coverage.info``.
+* When the tests are run via the ``tox-pytest`` workflow in GitHub Actions, the test
+  coverage data from the ``coverage.info`` output is uploaded to a service called
+  `Coveralls <https://coveralls.io>`__ that saves historical data about our test
+  coverage, and provides a nice visual representation of the data -- identifying which
+  subpackages, modules, and individual lines of are being tested. For example, here are
+  the results
+  `for the cheshire repo <https://coveralls.io/github/rmi-electricity/cheshire>`__.
 
 Documentation Builds
 --------------------
