@@ -17,8 +17,8 @@ dependencies:
   # - numba>=0.55.1,<0.56  # numba speeds up some kinds of math by 100x
 
   # Jupyter packages:
-  #  - jupyterlab>=3.2,<4
-  #  - nbconvert>=6,<7 # Used to clear notebook outputs in pre-commit hooks
+  - jupyterlab>=3.2,<4
+  - nbconvert>=6,<7 # Used to clear notebook outputs in pre-commit hooks
 
   # Use pip to install the package defined by this repo for development:
   - pip:
