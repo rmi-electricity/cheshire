@@ -18,6 +18,10 @@ Cheshire: a Python Template Repository for RMI created by Catalyst Cooperative
    :target: https://github.com/psf/black>
    :alt: Any color you want, so long as it's black.
 
+.. image:: https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat
+   :target: https://pycqa.github.io/isort/
+   :alt: Imports: isort
+
 This template repository helps make new Python projects easier to set up and more
 uniform. It contains a lot of infrastructure surrounding a minimal Python package named
 ``cheshire`` (the cat who isn't entirely there...). This template is mostly a lightly
