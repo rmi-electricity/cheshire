@@ -72,7 +72,7 @@ packages that we publish, so our ``dispatch`` package would become ``rmi.dispatc
 in the Python Package Index (PyPI) or on ``conda-forge``. Because we do not generally
 distribute our work publicly, this issue is not so important, but we use this naming
 convention for internal consistency. The distribution name is determined
-by the ``name`` argument under ``[metadata]`` in ``setup.cfg``.
+by the ``name`` argument under ``[project]`` in ``pyproject.toml``.
 
 The package and distribution names are referenced in many of the files in the template
 repository, and they all need to be replaced with the name of your new package. You can
@@ -100,8 +100,9 @@ Python Package Skeleton
   interface to that module (``cli.py``) are included as examples.
 * Any files in the ``src/package_data/`` directory will also be packaged and deployed.
 * What files are included in or excluded from the package on the user's system is
-  controlled by the ``MANIFEST.in`` file and some options in ``setup.cfg``.
-* The CLI is deployed using a ``console_script`` entrypoint defined in ``setup.cfg``.
+  controlled by the ``MANIFEST.in`` file and some options in ``pyproject.toml``.
+* The CLI is deployed using a ``console_script`` entrypoint defined in
+  ``pyproject.toml``.
 * We use ``setuptools_scm`` to obtain the package's version directly from ``git`` tags,
   rather than storing it in the repository and manually updating it.
 * ``README.rst`` is read in and used for the package's ``long_description``. This is
@@ -114,9 +115,12 @@ Python Package Skeleton
   installing the package to use rather than develop.
 * Python has recently evolved a more diverse community of build and packaging tools.
   Which flavor is being used by a given package is indicated by the contents of
-  ``pyproject.toml``. That file also contains configuration for a few other tools,
-  including ``bandit``, ``black``, ``isort``, and ``mypy``, described in the section
-  on linters and formatters below.
+  ``pyproject.toml``. We currently use ``setuptools`` and all the required
+  packaging configuration and metadata, including what used to be in ``setup.py`` and
+  ``setup.cfg``, is now in ``pyproject.toml`` That file also contains configurations
+  for tools, including ``bandit``, ``black``, ``doc8``, ``flake8``, ``isort``,
+  ``mypy``, ``pytest``, and ``rstcheck`` described in the section on linters and
+  formatters below.
 
 Pytest Testing Framework
 ------------------------
@@ -140,8 +144,6 @@ Test Coordination with Tox
 * We also use Tox to coordinate running the code linters and building the documentation.
 * The default Tox environment is named ``ci`` and it will run the linters, build the
   documentation, run all the tests, and generate test coverage statistics.
-* ``tox.ini`` also contains sections near the bottom which configure the behavior of
-  ``doc8``, ``flake8``, ``pytest``, and ``rstcheck``.
 
 Git Pre-commit Hooks
 --------------------
@@ -239,7 +241,7 @@ Documentation Builds
   convert the docstrings embedded in the python modules under ``src/`` into additional
   documentation automatically.
 * The top level documentation index simply includes this ``README.rst``, the
-  ``LICENSE.txt`` and ``CODE_OF_CONDUCT.md`` files are similarly referenced. The only
+  ``LICENSE.txt`` and ``code_of_conduct.rst`` files are similarly referenced. The only
   standalone documentation file under ``docs/`` right now is the ``release_notes.rst``.
 * Unless you're debugging something specific, the docs should always be built using
   ``tox -e docs`` as that will lint the source files using ``doc8`` and ``rstcheck``,
@@ -249,8 +251,8 @@ Documentation Builds
   up after, it should be integrated with the Sphinx hooks. There are some examples of
   how to do this at the bottom of ``docs/conf.py`` in the "custom build operations"
   section. For example, this is how we automatically regenerate the data dictionaries
-  based on the PUDL metadata whenever the docs are built, ensuring that the docs stay up
-  to date.
+  based on the PUDL metadata whenever the docs are built, ensuring that the docs stay
+  up to date.
 
 Documentation Publishing
 ------------------------
@@ -268,9 +270,10 @@ Dependabot
 ----------
 We use GitHub's `Dependabot <https://docs.github.com/en/code-security/dependabot/dependabot-version-updates>`__
 to automatically update the allowable versions of packages we depend on. This applies
-to both the Python dependencies specified in ``setup.py`` and to the versions of the
-`GitHub Actions <https://docs.github.com/en/actions>`__ that we employ. The dependabot
-behavior is configured in ``.github/dependabot.yml``
+to both the Python dependencies specified in ``pyproject.toml`` and to the versions of
+the `GitHub Actions <https://docs.github.com/en/actions>`__ that we employ. The
+dependabot behavior is configured in ``.github/dependabot.yml``. Unfortunately, it does
+not check or update ``environment.yml``, so that must be done manually.
 
 GitHub Actions
 --------------
