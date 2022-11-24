@@ -275,6 +275,10 @@ the `GitHub Actions <https://docs.github.com/en/actions>`__ that we employ. The
 dependabot behavior is configured in ``.github/dependabot.yml``. Unfortunately, it does
 not check or update ``environment.yml``, so that must be done manually.
 
+For Dependabot's PRs to automatically get merged, your repository must have access to
+the correct organization secrets and the ``rmi-electricity auto-merge Bot`` GitHub App.
+Contact Alex for help setting this up.
+
 GitHub Actions
 --------------
 Under ``.github/workflows`` are YAML files that configure the `GitHub Actions
