@@ -100,7 +100,7 @@ Python Package Skeleton
   interface to that module (``cli.py``) are included as examples.
 * Any files in the ``src/package_data/`` directory will also be packaged and deployed.
 * What files are included in or excluded from the package on the user's system is
-  controlled by the ``MANIFEST.in`` file and some options in ``pyproject.toml``.
+  controlled by ``pyproject.toml``.
 * The CLI is deployed using a ``console_script`` entrypoint defined in
   ``pyproject.toml``.
 * We use ``setuptools_scm`` to obtain the package's version directly from ``git`` tags,
@@ -166,7 +166,9 @@ Most git GUI tools work with pre-commit but don't work that well. The terminal b
 
 For this to work you must have a terminal session inside your repository folder. To
 see what will be committed run ``git status``. To stage all files shown in red so
-they will be included in the commit, run ``git add .``.
+they will be included in the commit, run ``git add .``. Note: keeping ``.gitignore``
+current so that it excludes all file patterns you want to keep out of git will make
+this process much easier.
 
 To make the commit run ``git commit -m '<commmit message>'``. If pre-commit hooks
 alter the files, you will need to add those fixed files again (you can see this when
@@ -277,7 +279,7 @@ not check or update ``environment.yml``, so that must be done manually.
 
 For Dependabot's PRs to automatically get merged, your repository must have access to
 the correct organization secrets and the ``rmi-electricity auto-merge Bot`` GitHub App.
-Contact Alex for help setting this up.
+Contact Alex Engel for help setting this up.
 
 GitHub Actions
 --------------
@@ -287,4 +289,5 @@ Actions to:
 
 * Run continuous integration using `tox <https://tox.wiki>`__ on several different
   versions of Python.
-* Build and publish docs to github-pages.
+* Build and publish docs to GitHub Pages.
+* Merge passing dependabot PRs.
