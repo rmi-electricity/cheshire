@@ -38,6 +38,8 @@ Create a new repository from this template
   be used to define a package named ``cheshire``.
 * Fork this template repository to create a new Python project repo.
   `See these instructions <https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template>`__.
+* Create a release with a version tag. This is required because various tools use it 
+  to set the version dynamically.  
 * Clone the new repository to your development machine.
 * Run ``pre-commit install`` in the newly clone repository to install the
   `pre-commit hooks <https://pre-commit.com/>`__ defined in ``.pre-commit-config.yaml``
@@ -46,6 +48,7 @@ Create a new repository from this template
 * Activate the new conda environment with ``conda activate cheshire``.
 * Run ``tox`` from the top level of the repository to verify that everything is working
   correctly.
+
 
 Rename the package and distribution
 =======================================================================================
