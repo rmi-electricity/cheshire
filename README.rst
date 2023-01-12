@@ -29,6 +29,13 @@ modified copy of Catalyst Cooperative's
 `cheshire <https://github.com/catalyst-cooperative/cheshire>`_ but with alterations
 for private work and alternative tools.
 
+The goal of this template is to provide a uniform starting point for Python projects,
+with reasonable configurations for a suite of common tools. It is by no means
+comprehensive but generally errs on including a kind of tool rather excluding it. In
+other words, it includes a lot of things that are not necessary and likely not worth
+getting to work for a basic Python project.
+
+
 Create a new repository from this template
 =======================================================================================
 
@@ -41,11 +48,11 @@ Create a new repository from this template
 * Create a release with a version tag if there isn't one already. This is required
   because various tools use it to set the version dynamically.
 * Clone the new repository to your development machine.
-* Run ``pre-commit install`` in the newly clone repository to install the
-  `pre-commit hooks <https://pre-commit.com/>`__ defined in ``.pre-commit-config.yaml``
 * Create the ``cheshire`` conda environment by running ``conda env create`` or
   (preferably) ``mamba env create`` in the top level of the repository.
 * Activate the new conda environment with ``conda activate cheshire``.
+* Run ``pre-commit install`` in the newly clone repository to install the
+  `pre-commit hooks <https://pre-commit.com/>`__ defined in ``.pre-commit-config.yaml``
 * Run ``tox`` from the top level of the repository to verify that everything is working
   correctly.
 
@@ -109,7 +116,7 @@ Python Package Skeleton
 * We use ``setuptools_scm`` to obtain the package's version directly from ``git`` tags,
   rather than storing it in the repository and manually updating it.
 * ``README.rst`` is read in and used for the package's ``long_description``. This is
-  what is would be displayed on the PyPI page for the package. For example, see the
+  what would be displayed on the PyPI page for the package. For example, see the
   `PUDL Catalog <https://pypi.org/project/catalystcoop.pudl-catalog/0.1.0/>`__ page.
 * By default we create at least three sets of "extras" -- additional optional package
   dependencies that can be installed in special circumstances: ``dev``, ``doc```, and
@@ -155,25 +162,23 @@ Git Pre-commit Hooks
   hooks are taken from the excellent `pre-commit project <https://pre-commit.com/>`__.
 * The hooks are configured in ``.pre-commit-config.yaml``
 * For them to run automatically when you try to make a commit, you **must** install the
-  pre-commit hooks in your cloned repository first. This only has to be done once.
+  pre-commit hooks in your cloned repository first. This only has to be done once by
+  running ``pre-commit install`` in your local repo.
 * These checks are run as part of our CI, and the CI will fail if the pre-commit hooks
   fail.
-* We also use the `pre-commit.ci <https://pre-commit.ci>`__ service to run the same
-  checks on any code that is pushed to GitHub, and to apply standard code formatting
-  to the PR in case it hasn't been run locally prior to being committed.
 
 Additional comments on using Pre-commit
 ----------------------------------------------------
 Most git GUI tools work with pre-commit but don't work that well. The terminal based
 ``git`` is usually the safer choice.
 
-For this to work you must have a terminal session inside your repository folder. To
-see what will be committed run ``git status``. To stage all files shown in red so
-they will be included in the commit, run ``git add .``. Note: keeping ``.gitignore``
-current so that it excludes all file patterns you want to keep out of git will make
-this process much easier.
+For this to work you must have a terminal session inside your repository folder and
+the correct environment activated. To see what will be committed run ``git status``.
+To stage all files shown in red so they will be included in the commit, run
+``git add .``. Note: keeping ``.gitignore`` current so that it excludes all file
+patterns you want to keep out of git will make this process much easier.
 
-To make the commit run ``git commit -m '<commmit message>'``. If pre-commit hooks
+To make the commit, run ``git commit -m '<commmit message>'``. If pre-commit hooks
 alter the files, you will need to add those fixed files again (you can see this when
 you run ``git status``) and then do the commit again.
 
