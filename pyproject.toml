@@ -25,7 +25,7 @@ dependencies = [
 dev = [
     "black[jupyter] >= 22,< 24",
     "isort>=5.0,<5.13",
-    "tox>=3.20,<4.5",
+    "tox>=3.20,<4.6",
 ]
 doc = [
     "doc8>=0.9,<1.2",  # Ensures clean documentation formatting
@@ -54,7 +54,7 @@ tests = [
     "pytest>=6.2,<7.4",  # test framework
     "pytest-console-scripts>=1.1,<1.4",  # Allow automatic testing of scripts
     "pytest-cov>=2.10,<4.1",  # Pytest plugin for working with coverage
-    "tox>=3.20,<4.5",  # Python test environment manager
+    "tox>=3.20,<4.6",  # Python test environment manager
 ]
 types = [
     "types-setuptools"
