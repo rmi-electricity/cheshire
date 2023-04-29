@@ -3,15 +3,7 @@ channels:
   - conda-forge
 dependencies:
   # Packages required for setting up the environment
-  - pip>=21,<23
-  #  - python>=3.8,<3.12
-  - setuptools<66
-
-  # Packages specified in setup.cfg that need or benefit from binary conda packages
-  - pandas >= 1.4,<1.6
-
-  # Packages not specified in setup.cfg that provide optional, helpful binaries:
-  # - numba>=0.55.1,<0.56  # numba speeds up some kinds of math by 100x
+  - pip>=21,<24
 
   # Jupyter packages:
   - jupyterlab>=3.2,<4
@@ -19,4 +11,4 @@ dependencies:
 
   # Use pip to install the package defined by this repo for development:
   - pip:
-      - --editable ./[dev,doc,tests,types]
+      - --editable ./[dev,doc,tests]

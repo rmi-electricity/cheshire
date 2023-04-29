@@ -15,6 +15,11 @@ What's New?
 * Updates to ``docs-to_gh-pages.yml`` so it works with the version from
   ``setuptools-scm``.
 * Version bumps, including testing against Python 3.11.
+* Drop ``flake8``, ``isort``, ``bandit`` and others in favor of ``ruff``.
+* Reorganized and simplified ``README.rst`` to more clearly provide instructions for
+  using the ``cheshire`` template, and to describe what it contains.
+* Change GHA CI to only use pip and tox rather than mamba and tox. This means that
+  users are more likely to be able to completely ignore those configuration files.
 
 
 .. _release-v0-2-0:

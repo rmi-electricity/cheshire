@@ -26,8 +26,8 @@ def parse_command_line(argv: list[str]) -> argparse.Namespace:
 
     """
 
-    def formatter(prog) -> argparse.HelpFormatter:  # type: ignore
-        """This is a hack to create HelpFormatter with a particular width."""
+    def formatter(prog) -> argparse.HelpFormatter:
+        """A hack to create HelpFormatter with a particular width."""
         return argparse.HelpFormatter(prog, width=88)
 
     # Use the module-level docstring as the script's description in the help message.

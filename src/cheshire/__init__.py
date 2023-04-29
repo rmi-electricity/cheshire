@@ -8,7 +8,7 @@ from importlib.metadata import PackageNotFoundError, version
 # In order for the package modules to be available when you import the package,
 # they need to be imported here somehow. Not sure if this is best practice though.
 import cheshire.cli
-import cheshire.dummy  # noqa: F401
+import cheshire.dummy
 
 # Create a root logger for use anywhere within the package.
 logger = logging.getLogger(__name__)
