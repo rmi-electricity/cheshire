@@ -20,6 +20,10 @@ What's New?
   using the ``cheshire`` template, and to describe what it contains.
 * Change GHA CI to only use pip and tox rather than mamba and tox. This means that
   users are more likely to be able to completely ignore those configuration files.
+* Change ``sphinx`` command in ``tox.ini`` so that warnings are not treated as errors.
+  In my experience lots of things that seem fine raise warnings but don't cause problems
+  in the docs so treating warnings as errors just makes tox fail. Also many of the
+  warnings don't seem fixable without changing package code in undesirable ways.
 
 
 .. _release-v0-2-0:
