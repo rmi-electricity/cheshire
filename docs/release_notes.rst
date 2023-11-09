@@ -24,6 +24,9 @@ What's New?
   In my experience lots of things that seem fine raise warnings but don't cause problems
   in the docs so treating warnings as errors just makes tox fail. Also many of the
   warnings don't seem fixable without changing package code in undesirable ways.
+* Bump Python version to 3.12.
+* Switch to using ``ruff format`` from ``black`` in pre-commit hooks.
+* Use :mod:`importlib` instead of :mod:`pkg_resources` in ``console_scripts_test.py``.
 
 
 .. _release-v0-2-0:

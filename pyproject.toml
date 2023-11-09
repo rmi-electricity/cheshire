@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools<69", "setuptools_scm[toml]>=3.5.0"]
+requires = ["setuptools>=60", "setuptools_scm>=8"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -16,8 +16,9 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
 ]
-requires-python = ">=3.10,<3.12"
+requires-python = ">=3.10,<3.13"
 dependencies = [
     "pandas >= 1.4,< 2.2",
 ]
@@ -30,7 +31,7 @@ dev = [
 ]
 doc = [
     "doc8>=0.9,<1.2",  # Ensures clean documentation formatting
-    "furo>=2022.4.7",  # A clean customisable Sphinx documentation theme.
+    "furo>=2023.09.10",  # A clean customisable Sphinx documentation theme.
     "rstcheck[sphinx,toml]>=5.0,<6.3",  # ReStructuredText linter
     "sphinx>=4,!=5.1.0,<7.2.7",
     "sphinx-autoapi>=1.8,<3.1",
@@ -124,10 +125,28 @@ ignore = [
     "D401",  # First line of docstring should be in imperative mood: "{first_line}"
     "E501",  # black handles code line length
     "D407",  # dashed-underline-after-section, upsets Sphinx
+    # conflict with ruff format
+    "W191",  # tab-indentation
+    "E111",  # indentation-with-invalid-multiple
+    "E114",  # indentation-with-invalid-multiple-comment
+    "E117",  # over-indented
+    "D206",  # indent-with-spaces
+    "D300",  # triple-single-quotes
+    "Q000",  # bad-quotes-inline-string
+    "Q001",  # bad-quotes-multiline-string
+    "Q002",  # bad-quotes-docstring
+    "Q003",  # avoidable-escaped-quote
+    "COM812",  # missing-trailing-comma
+    "COM819",  # prohibited-trailing-comma
+    "ISC001",  # single-line-implicit-string-concatenation
+    "ISC002",  # multi-line-implicit-string-concatenation
 ]
 
 [tool.ruff.pycodestyle]
 max-doc-length = 88
+
+[tool.ruff.pydocstyle]
+convention = "google"
 
 [tool.ruff.flake8-tidy-imports]
 ban-relative-imports = "all"

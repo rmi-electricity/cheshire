@@ -1,13 +1,14 @@
 """Test the PUDL console scripts from within PyTest."""
 
-import pkg_resources
+from importlib.metadata import entry_points
+
 import pytest
 
 # Obtain a list of all deployed entry point scripts to test:
 ENTRY_POINTS = [
     ep.name
-    for ep in pkg_resources.iter_entry_points("console_scripts")
-    if ep.module_name.startswith("cheshire")
+    for ep in entry_points(group="console_scripts")
+    if ep.module.startswith("cheshire")
 ]
 
 
@@ -18,7 +19,7 @@ def test_pudl_scripts(script_runner, ep: str) -> None:
 
     The script_runner fixture is provided by the pytest-console-scripts plugin.
     """
-    ret = script_runner.run(ep, "--help", print_result=False)
+    ret = script_runner.run([ep, "--help"], print_result=False)
     assert ret.success  # nosec: B101
 
 
@@ -34,5 +35,5 @@ def test_pudl_scripts(script_runner, ep: str) -> None:
 @pytest.mark.script_launch_mode("inprocess")
 def test_winston_args(script_runner, alpha: str, beta: str) -> None:
     """Try running the script with bad inputs."""
-    ret = script_runner.run("winston", "--alpha", alpha, "--beta", beta)
+    ret = script_runner.run(["winston", "--alpha", alpha, "--beta", beta])
     assert ret.success

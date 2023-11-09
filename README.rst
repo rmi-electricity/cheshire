@@ -197,7 +197,7 @@ standard style of formatting and syntactical idioms across the codebase, we use 
 automatic code formatters, which run as pre-commit hooks. The following formatters are
 included in the template ``.pre-commit-config.yaml``:
 
-* `Deterministic formatting with Black <https://github.com/psf/black>`__
+* `Deterministic formatting with ruff (similar to black) <https://docs.astral.sh/ruff/formatter/>`__
 * Fix some of the issues found by `ruff <https://github.com/charliermarsh/ruff>`__,
   including to:
 
