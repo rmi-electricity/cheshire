@@ -13,7 +13,7 @@ repos:
 
   # Other file formatting, plus common Git mistakes & text file standardization:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.5.0
     hooks:
       - id: check-added-large-files # Don't accidentally commit giant files.
         args: ["--maxkb=9000"]
@@ -32,14 +32,14 @@ repos:
 
   # Linter and formatter that replaces flake8, isort, etc.
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.1.4
+    rev: v0.1.5
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
       - id: ruff-format
 
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.0.0-alpha.9-for-vscode
+    rev: v3.1.0
     hooks:
       - id: prettier
         types_or: [yaml]
@@ -57,7 +57,7 @@ repos:
 
   # Lint any RST files and embedded code blocks for syntax / formatting errors
   - repo: https://github.com/rstcheck/rstcheck
-    rev: v6.1.2
+    rev: v6.2.0
     hooks:
       - id: rstcheck
         additional_dependencies: ["rstcheck[toml, sphinx]"]
