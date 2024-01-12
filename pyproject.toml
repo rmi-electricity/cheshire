@@ -27,7 +27,7 @@ dependencies = [
 dev = [
     "black[jupyter] >= 22,< 24",
     "ruff>0.0.215,<0.1.14",
-    "tox>=3.20,<4.12",
+    "tox>=3.20,<4.13",
 ]
 doc = [
     "doc8>=0.9,<1.2",  # Ensures clean documentation formatting
@@ -46,7 +46,7 @@ tests = [
     "pytest-console-scripts>=1.1,<1.5",  # Allow automatic testing of scripts
     "pytest-cov>=2.10,<4.2",  # Pytest plugin for working with coverage
     "ruff>0.0.215,<0.1.14",  # Linter and autoformatter, replaces flake8, isort, others
-    "tox>=3.20,<4.12",  # Python test environment manager
+    "tox>=3.20,<4.13",  # Python test environment manager
 ]
 types = []
 
