@@ -132,7 +132,7 @@ Python Package Skeleton
   * ``setuptools_scm`` to obtain the package's version directly from ``git`` tags.
   * What files (beyond the code in ``src/`` are included in or excluded from the package
     on the user's system.
-  * Configurations for ``ruff``, ``black``, ``doc8``, and ``rstcheck`` described in the
+  * Configurations for ``ruff``, ``doc8``, and ``rstcheck`` described in the
     `Code Formatting and Linters`_ section below.
 
 Testing Tools

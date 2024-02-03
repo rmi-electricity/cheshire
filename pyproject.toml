@@ -25,9 +25,8 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "black[jupyter] >= 22,< 25",
     "ruff>0.0.215,<0.2.1",
-    "tox>=3.20,<4.12",
+    "tox>=3.20,<4.13",
 ]
 doc = [
     "doc8>=0.9,<1.2",  # Ensures clean documentation formatting
@@ -46,7 +45,7 @@ tests = [
     "pytest-console-scripts>=1.1,<1.5",  # Allow automatic testing of scripts
     "pytest-cov>=2.10,<4.2",  # Pytest plugin for working with coverage
     "ruff>0.0.215,<0.2.1",  # Linter and autoformatter, replaces flake8, isort, others
-    "tox>=3.20,<4.12",  # Python test environment manager
+    "tox>=3.20,<4.13",  # Python test environment manager
 ]
 types = []
 
@@ -96,6 +95,12 @@ ignore_directives = ["bibliography", "todo", "include"]
 [tool.ruff]
 line-length = 88
 show-fixes = true
+
+[tool.ruff.format]
+# Enable reformatting of code snippets in docstrings.
+docstring-code-format = true
+
+[tool.ruff.lint]
 select = [  # https://beta.ruff.rs/docs/rules/
     "A", # flake8-builtins
     "B", # flake8-bugbear
@@ -141,20 +146,12 @@ ignore = [
     "ISC001",  # single-line-implicit-string-concatenation
     "ISC002",  # multi-line-implicit-string-concatenation
 ]
+flake8-tidy-imports.ban-relative-imports = "all"
+flake8-type-checking.strict = true
+pycodestyle.max-doc-length = 88
+pydocstyle.convention = "google"
 
-[tool.ruff.pycodestyle]
-max-doc-length = 88
-
-[tool.ruff.pydocstyle]
-convention = "google"
-
-[tool.ruff.flake8-tidy-imports]
-ban-relative-imports = "all"
-
-[tool.ruff.flake8-type-checking]
-strict = true
-
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
 "docs/conf.py" = ["E501"]
 "tests/*.py" = ["S101", "SIM117", "F841", "D100", "D101", "PD901"]
