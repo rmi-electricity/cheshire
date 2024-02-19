@@ -25,7 +25,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "ruff>0.0.215,<0.2.2",
+    "ruff>0.0.215,<0.2.3",
     "tox>=3.20,<4.14",
 ]
 doc = [
@@ -44,7 +44,7 @@ tests = [
     "pytest>=6.2,<8.1",  # test framework
     "pytest-console-scripts>=1.1,<1.5",  # Allow automatic testing of scripts
     "pytest-cov>=2.10,<4.2",  # Pytest plugin for working with coverage
-    "ruff>0.0.215,<0.2.2",  # Linter and autoformatter, replaces flake8, isort, others
+    "ruff>0.0.215,<0.2.3",  # Linter and autoformatter, replaces flake8, isort, others
     "tox>=3.20,<4.14",  # Python test environment manager
 ]
 types = []
