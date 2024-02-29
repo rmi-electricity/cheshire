@@ -67,7 +67,7 @@ Create a new repository from this template
   ``conda env create -f environment.yml`` in the top level of the repository.
 * Activate the new conda environment with ``conda activate cheshire``.
 * If you intend to use PUDL data in your project, follow these
-  `setup instructions<https://rmi.github.io/etoolbox/#setup>`__. If not, delete these
+  `setup instructions <https://rmi.github.io/etoolbox/#setup>`__. If not, delete these
   three things (including the decorators above the latter two beginning with ``@``):
 
   1. ``src/cheshire/dummy_pudl.py``,
