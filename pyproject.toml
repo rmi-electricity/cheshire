@@ -21,6 +21,10 @@ classifiers = [
 requires-python = ">=3.10,<3.13"
 dependencies = [
     "pandas >= 1.4,< 2.3",
+    # etoolbox provides a number of useful tools for working with data. It also includes
+    # functions and infrastructure for accessing PUDL data stored on GCS so the sqlite
+    # database is not requried
+    "rmi.etoolbox @ git+https://github.com/rmi/etoolbox.git",
 ]
 
 [project.optional-dependencies]
@@ -64,11 +68,6 @@ write_to = "src/cheshire/_version.py"
 #######################################################################################
 # Configurations for linters and other tools
 #######################################################################################
-[tool.black]
-line-length = 88
-target-version = ["py39", "py310", "py311"]
-include = "\\.pyi?$"
-
 [tool.doc8]
 max-line-length = 88
 ignore-path = "docs/_build"

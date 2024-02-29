@@ -31,3 +31,12 @@ def test_something(a: int, b: int, expected_c: int) -> None:
     """
     c = do_something(a, b)
     assert c == expected_c  # nosec: B101
+
+
+@pytest.mark.usefixtures("pudl_access_key_setup")
+def test_use_a_table_from_pudl() -> None:
+    """Test that we can run a function that uses a table from the PUDL GCS bucket."""
+    from cheshire.dummy_pudl import use_a_table_from_pudl
+
+    df = use_a_table_from_pudl()
+    assert df.loc["CA"] > df.loc["AK"]

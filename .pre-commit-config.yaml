@@ -32,7 +32,7 @@ repos:
 
   # Linter and formatter that replaces flake8, isort, etc.
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.2.0
+    rev: v0.2.2
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
@@ -77,15 +77,6 @@ repos:
         pass_filenames: false
         always_run: true
         entry: find notebooks \( -name \*.ipynb -not -name \*checkpoint.ipynb \) -type f -exec jupyter nbconvert --clear-output {} \;
-      # Run the unit tests
-      - id: unit-tests
-        name: unit-tests
-        stages: [commit]
-        language: system
-        verbose: false
-        pass_filenames: false
-        always_run: true
-        entry: pytest --doctest-modules src/cheshire tests
 
 # Configuration for pre-commit.ci
 ci:
@@ -97,5 +88,5 @@ ci:
   autoupdate_branch: main
   autoupdate_commit_msg: "[pre-commit.ci] pre-commit autoupdate"
   autoupdate_schedule: weekly
-  skip: [unit-tests, nb-output-clear]
+  skip: [nb-output-clear]
   submodules: false

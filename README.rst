@@ -36,6 +36,13 @@ comprehensive but generally errs on including a kind of tool rather excluding it
 other words, it includes a lot of things that are not necessary and likely not worth
 getting to work for a basic Python project.
 
+Its configurations of testing and GitHub Actions for continuous integration (CI)
+support accessing PUDL tables stored as parquets on Google Cloud Storage which is the
+preferred way to access PUDL data when it needs to be part of CI. The CI side of this
+should 'just work' for any repository based on this template in rmi-electricity.
+Additional `setup <https://rmi.github.io/etoolbox/#setup>`__ is required for getting
+it to work locally.
+
 .. contents:: Table of Contents
    :depth: 2
 
@@ -59,6 +66,14 @@ Create a new repository from this template
 * Create the ``cheshire`` conda environment by running
   ``conda env create -f environment.yml`` in the top level of the repository.
 * Activate the new conda environment with ``conda activate cheshire``.
+* If you intend to use PUDL data in your project, follow these
+  `setup instructions<https://rmi.github.io/etoolbox/#setup>`__. If not, delete these
+  three things (including the decorators above the latter two beginning with ``@``):
+
+  1. ``src/cheshire/dummy_pudl.py``,
+  2. the ``test_use_a_table_from_pudl`` test from ``tests/dummy_unit_test.py``
+  3. the ``pudl_access_key_setup`` fixture from ``tests/conftest.py``.
+
 * Run ``pre-commit install`` in the newly cloned repository to install the
   `pre-commit hooks <https://pre-commit.com/>`__ defined in ``.pre-commit-config.yaml``.
 * Run ``tox`` from the top level of the repository to verify that everything is working
@@ -120,6 +135,7 @@ Python Package Skeleton
     user system. That code is in a directory with the same name as the package.
   * A simple python module (``dummy.py``), and a separate module providing a command
     line interface to that module (``cli.py``) are included as examples.
+  * A module (``dummy_pudl.py``) that includes an example of how to access PUDL data.
   * Any files in the ``src/package_data/`` directory will also be packaged and deployed.
 
 * Instructions for ``pip`` on how to install the package and configurations for a
@@ -216,7 +232,7 @@ They don't change the files, but they will raise an error or warning when someth
 doesn't look right so you can fix it.
 
 * `ruff <https://github.com/charliermarsh/ruff>`__ is an extremely fast Python linter,
-  written in Rust that does that replaces a number of other tools including:
+  written in Rust that replaces a number of other tools including:
 
   * `flake8 <https://github.com/PyCQA/flake8>`__ is an extensible Python linting
     framework, with a bunch of plugins.

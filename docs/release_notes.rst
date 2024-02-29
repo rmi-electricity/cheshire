@@ -5,7 +5,7 @@ PACKAGE_NAME Release Notes
 .. _release-v0-3-0:
 
 ---------------------------------------------------------------------------------------
-0.3.0 (2022-XX-XX)
+0.3.0 (2024-XX-XX)
 ---------------------------------------------------------------------------------------
 
 What's New?
@@ -27,6 +27,8 @@ What's New?
 * Bump Python version to 3.12.
 * Switch to using ``ruff format`` from ``black`` in pre-commit hooks.
 * Use :mod:`importlib` instead of :mod:`pkg_resources` in ``console_scripts_test.py``.
+* Include configurations that enable and examples that demonstrate accessing PUDL data
+  from GCS locally and in GitHub Actions.
 
 
 .. _release-v0-2-0:
