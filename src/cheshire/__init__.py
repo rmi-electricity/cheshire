@@ -2,6 +2,7 @@
 
 Created by Catalyst Cooperative, modified by RMI.
 """
+
 import logging
 from importlib.metadata import PackageNotFoundError, version
 

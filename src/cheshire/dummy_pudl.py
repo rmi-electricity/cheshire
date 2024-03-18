@@ -1,4 +1,5 @@
 """Example of a module that contains functions for PUDL."""
+
 from etoolbox.utils.pudl import pd_read_pudl
 
 
