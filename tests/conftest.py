@@ -1,10 +1,11 @@
 """PyTest configuration module. Defines useful fixtures, command line args."""
 
 import logging
+import os
 from pathlib import Path
 
 import pytest
-from etoolbox.utils.pudl import setup_access_key_for_ci
+from etoolbox.utils.pudl import rmi_pudl_init
 
 logger = logging.getLogger(__name__)
 
@@ -44,4 +45,4 @@ def pudl_access_key_setup():  # noqa: PT004
     that runs in CI.
     """
     # disable the PUDL tests if etoolbox is not installed
-    setup_access_key_for_ci()
+    rmi_pudl_init(os.environ.get("PUDL_ACCESS_KEY"))

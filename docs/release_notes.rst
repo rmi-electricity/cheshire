@@ -29,6 +29,7 @@ What's New?
 * Use :mod:`importlib` instead of :mod:`pkg_resources` in ``console_scripts_test.py``.
 * Include configurations that enable and examples that demonstrate accessing PUDL data
   from GCS locally and in GitHub Actions.
+* Update to support new way to setup PUDL GCP using ``rmi.etoolbox``.
 
 
 .. _release-v0-2-0:
