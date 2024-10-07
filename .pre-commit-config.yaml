@@ -32,7 +32,7 @@ repos:
 
   # Linter and formatter that replaces flake8, isort, etc.
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.5.0
+    rev: v0.6.8
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
@@ -50,14 +50,14 @@ repos:
 
   # Check for errors in restructuredtext (.rst) files under the doc hierarchy
   - repo: https://github.com/PyCQA/doc8
-    rev: v1.1.1
+    rev: v1.1.2
     hooks:
       - id: doc8
         args: ["--config", "pyproject.toml"]
 
   # Lint any RST files and embedded code blocks for syntax / formatting errors
   - repo: https://github.com/rstcheck/rstcheck
-    rev: v6.2.0
+    rev: v6.2.4
     hooks:
       - id: rstcheck
         additional_dependencies: ["rstcheck[toml, sphinx]"]
@@ -71,7 +71,7 @@ repos:
       # clear outputs from Jupyter notebooks
       - id: nb-output-clear
         name: nb-output-clear
-        stages: [commit]
+        stages: [pre-commit]
         language: system
         verbose: false
         pass_filenames: false

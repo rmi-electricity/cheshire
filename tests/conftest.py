@@ -1,11 +1,9 @@
 """PyTest configuration module. Defines useful fixtures, command line args."""
 
 import logging
-import os
 from pathlib import Path
 
 import pytest
-from etoolbox.utils.pudl import rmi_pudl_init
 
 logger = logging.getLogger(__name__)
 
@@ -35,14 +33,3 @@ def test_dir() -> Path:
     Mostly this is meant as an example of a fixture.
     """
     return Path(__file__).parent
-
-
-@pytest.fixture(scope="session")
-def pudl_access_key_setup():  # noqa: PT004
-    """Set up PUDL access key for testing.
-
-    This is required for any test that requires access to the PUDL GCS bucket
-    that runs in CI.
-    """
-    # disable the PUDL tests if etoolbox is not installed
-    rmi_pudl_init(os.environ.get("PUDL_ACCESS_KEY"))

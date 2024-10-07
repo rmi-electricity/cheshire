@@ -30,6 +30,10 @@ What's New?
 * Include configurations that enable and examples that demonstrate accessing PUDL data
   from GCS locally and in GitHub Actions.
 * Update to support new way to setup PUDL GCP using ``rmi.etoolbox``.
+* Update to support new way to access PUDL on AWS using ``rmi.etoolbox`` requiring
+  much less setup than the GCP version.
+* Pre-commit hook version bumps.
+
 
 
 .. _release-v0-2-0:

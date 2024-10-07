@@ -72,7 +72,6 @@ Create a new repository from this template
 
   1. ``src/cheshire/dummy_pudl.py``,
   2. the ``test_use_a_table_from_pudl`` test from ``tests/dummy_unit_test.py``
-  3. the ``pudl_access_key_setup`` fixture from ``tests/conftest.py``.
 
 * Run ``pre-commit install`` in the newly cloned repository to install the
   `pre-commit hooks <https://pre-commit.com/>`__ defined in ``.pre-commit-config.yaml``.
