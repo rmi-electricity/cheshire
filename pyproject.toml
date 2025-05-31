@@ -1,13 +1,13 @@
 [build-system]
-requires = ["setuptools>=60", "setuptools_scm>=8"]
+requires = [ "setuptools>=60", "setuptools_scm>=8" ]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "rmi.cheshire"
 description = "A modified template based on ``catalyst-cooperative/cheshire``."
-license = {file = "LICENSE.txt"}
+license = { file = "LICENSE.txt" }
 readme = "README.rst"
-dynamic = ["version"]
+dynamic = [ "version" ]
 classifiers = [
     "Natural Language :: English",
     "Operating System :: OS Independent",
@@ -20,7 +20,7 @@ classifiers = [
 ]
 requires-python = ">=3.10,<3.14"
 dependencies = [
-    "pandas >= 1.4,< 2.3",
+    "pandas>=1.4,<2.3",
     # etoolbox provides a number of useful tools for working with data. It also includes
     # functions and infrastructure for accessing PUDL data stored on GCS so the sqlite
     # database is not requried
@@ -52,7 +52,7 @@ tooling = [ # in local development these are provided globally
     "tox>=4.16.0,<4.27",  # Python test environment manager
     "tox-uv>=1.25,<2",
 ]
-tests = ["rmi-cheshire[dev,tooling]"]
+tests = [ "rmi-cheshire[dev,tooling]" ]
 types = []
 
 [project.scripts]  # entry points
@@ -62,7 +62,7 @@ winston = "cheshire.cli:main"
 include-package-data = true
 
 [tool.setuptools.dynamic]
-version = {attr = "cheshire._version.__version__"}
+version = { attr = "cheshire._version.__version__" }
 
 [tool.setuptools_scm]
 write_to = "src/cheshire/_version.py"
@@ -75,13 +75,13 @@ max-line-length = 88
 ignore-path = "docs/_build"
 
 [tool.pytest.ini_options]
-testpaths = ["."]
-addopts = ["--verbose"]
+testpaths = [ "." ]
+addopts = [ "--verbose" ]
 log_format = "%(asctime)s [%(levelname)8s] %(name)s:%(lineno)s %(message)s"
-log_date_format=" %Y-%m-%d %H:%M:%S"
+log_date_format = " %Y-%m-%d %H:%M:%S"
 log_cli = true
 log_cli_level = "INFO"
-doctest_optionflags = ["NORMALIZE_WHITESPACE", "IGNORE_EXCEPTION_DETAIL", "ELLIPSIS"]
+doctest_optionflags = [ "NORMALIZE_WHITESPACE", "IGNORE_EXCEPTION_DETAIL", "ELLIPSIS" ]
 filterwarnings = [
     "ignore:distutils Version classes are deprecated:DeprecationWarning",
     "ignore:Creating a LegacyVersion:DeprecationWarning:pkg_resources[.*]",
@@ -89,9 +89,9 @@ filterwarnings = [
 
 [tool.rstcheck]
 report_level = "WARNING"
-ignore_roles = ["pr", "issue", "user", "include"]
+ignore_roles = [ "pr", "issue", "user", "include" ]
 ignore_messages = '(Hyperlink target .* is not referenced\.$|Duplicate implicit target name:|An `AttributeError` error occured.*)'
-ignore_directives = ["bibliography", "todo", "include"]
+ignore_directives = [ "bibliography", "todo", "include" ]
 
 [tool.ruff]
 line-length = 88
@@ -153,46 +153,46 @@ pycodestyle.max-doc-length = 88
 pydocstyle.convention = "google"
 
 [tool.ruff.lint.per-file-ignores]
-"__init__.py" = ["F401"]
-"docs/conf.py" = ["E501"]
-"tests/*.py" = ["S101", "SIM117", "F841", "D100", "D101", "PD901"]
+"__init__.py" = [ "F401" ]
+"docs/conf.py" = [ "E501" ]
+"tests/*.py" = [ "S101", "SIM117", "F841", "D100", "D101", "PD901" ]
 
 [tool.tox]
-env_list = ["linters", "docs", "ci"]
+env_list = [ "linters", "docs", "ci" ]
 
 [tool.tox.env_run_base]
-allowlist_externals = ["bash", "coverage", "sphinx-build", "pytest", "ruff", "pre-commit"]
+allowlist_externals = [ "bash", "coverage", "sphinx-build", "pytest", "ruff", "pre-commit" ]
 runner = "uv-venv-runner"
-extras = ["qa", "dev", "doc"]
+extras = [ "qa", "dev", "doc" ]
 
 [tool.tox.env.linters]
 description = "Run the pre-commit, flake8 and bandit linters."
 commands = [
-    ['pre-commit', 'run', '--all-files', '--show-diff-on-failure', 'python-no-eval'],
-    ['pre-commit', 'run', '--all-files', '--show-diff-on-failure', 'python-no-log-warn'],
-    ['pre-commit', 'run', '--all-files', '--show-diff-on-failure', 'python-check-blanket-noqa'],
-    ['pre-commit', 'run', '--all-files', '--show-diff-on-failure', 'check-merge-conflict'],
-    ['pre-commit', 'run', '--all-files', '--show-diff-on-failure', 'check-yaml'],
-    ['pre-commit', 'run', '--all-files', '--show-diff-on-failure', 'check-case-conflict'],
-    ['pre-commit', 'run', '--all-files', '--show-diff-on-failure', 'debug-statements'],
-    ['pre-commit', 'run', '--all-files', '--show-diff-on-failure', 'name-tests-test'],
-    ['ruff', 'check', '.'],
+    [ "pre-commit", "run", "--all-files", "--show-diff-on-failure", "python-no-eval" ],
+    [ "pre-commit", "run", "--all-files", "--show-diff-on-failure", "python-no-log-warn" ],
+    [ "pre-commit", "run", "--all-files", "--show-diff-on-failure", "python-check-blanket-noqa" ],
+    [ "pre-commit", "run", "--all-files", "--show-diff-on-failure", "check-merge-conflict" ],
+    [ "pre-commit", "run", "--all-files", "--show-diff-on-failure", "check-yaml" ],
+    [ "pre-commit", "run", "--all-files", "--show-diff-on-failure", "check-case-conflict" ],
+    [ "pre-commit", "run", "--all-files", "--show-diff-on-failure", "debug-statements" ],
+    [ "pre-commit", "run", "--all-files", "--show-diff-on-failure", "name-tests-test" ],
+    [ "ruff", "check", "." ],
 ]
 
 [tool.tox.env.docs]
 description = "Build the HTML docs from scratch using Sphinx."
 commands = [
-    ['bash', '-c', 'rm -rf docs/_build'],
-    ['doc8', 'docs/', 'README.rst'],
-    ['rstcheck', '--config', 'pyproject.toml', '--recursive', './'],
-    ['sphinx-build', '-b', 'html', 'docs', 'docs/_build/html']
+    [ "bash", "-c", "rm -rf docs/_build" ],
+    [ "doc8", "docs/", "README.rst" ],
+    [ "rstcheck", "--config", "pyproject.toml", "--recursive", "./" ],
+    [ "sphinx-build", "-b", "html", "docs", "docs/_build/html" ],
 ]
 
 [tool.tox.env.ci]
 description = "un all continuous integration (CI) checks & generate test coverage."
 commands = [
-    ['coverage', 'erase'],
-    ['coverage', 'run', '--source={envsitepackagesdir}/cheshire', '-m', 'pytest', '--doctest-modules', '{envsitepackagesdir}/cheshire', 'tests'],
-    ['coverage', 'lcov', '-o', 'coverage.info'],
-    ['coverage', 'report', '--sort=cover']
+    [ "coverage", "erase" ],
+    [ "coverage", "run", "--source={envsitepackagesdir}/cheshire", "-m", "pytest", "--doctest-modules", "{envsitepackagesdir}/cheshire", "tests" ],
+    [ "coverage", "lcov", "-o", "coverage.info" ],
+    [ "coverage", "report", "--sort=cover" ],
 ]
