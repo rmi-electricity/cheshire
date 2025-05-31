@@ -1,0 +1,32 @@
+cheshire._version
+=================
+
+.. py:module:: cheshire._version
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   cheshire._version.version
+   cheshire._version.__version__
+   cheshire._version.__version_tuple__
+   cheshire._version.version_tuple
+
+
+Module Contents
+---------------
+
+.. py:data:: version
+   :type:  str
+
+.. py:data:: __version__
+   :type:  str
+
+.. py:data:: __version_tuple__
+   :type:  VERSION_TUPLE
+
+.. py:data:: version_tuple
+   :type:  VERSION_TUPLE
+
