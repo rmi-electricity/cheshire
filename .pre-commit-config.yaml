@@ -44,6 +44,13 @@ repos:
       - id: prettier
         types_or: [yaml]
 
+  # clear outputs from Jupyter notebooks
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.8.1
+    hooks:
+      - id: nbstripout
+        args: [--drop-empty-cells]
+
   ########################################################################################
   # Linters: hooks that check but don't alter Python & RST files
   ########################################################################################
@@ -62,21 +69,6 @@ repos:
       - id: rstcheck
         additional_dependencies: ["rstcheck[toml, sphinx]"]
         args: ["--config", "pyproject.toml"]
-
-  ########################################################################################
-  # Custom local hooks
-  ########################################################################################
-  - repo: local
-    hooks:
-      # clear outputs from Jupyter notebooks
-      - id: nb-output-clear
-        name: nb-output-clear
-        stages: [pre-commit]
-        language: system
-        verbose: false
-        pass_filenames: false
-        always_run: true
-        entry: find notebooks \( -name \*.ipynb -not -name \*checkpoint.ipynb \) -type f -exec jupyter nbconvert --clear-output {} \;
 
 # Configuration for pre-commit.ci
 ci:

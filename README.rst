@@ -19,9 +19,13 @@ Cheshire: a Python Template Repository for RMI created by Catalyst Cooperative
    :target: https://github.com/psf/black>
    :alt: Any color you want, so long as it's black.
 
-.. image:: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json
+.. image:: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json
     :target: https://github.com/astral-sh/ruff
     :alt: Ruff
+
+.. image:: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json
+    :target: https://github.com/astral-sh/uv
+    :alt: uv
 
 This template repository helps make new Python projects easier to set up and more
 uniform. It contains a lot of infrastructure surrounding a minimal Python package named
@@ -36,19 +40,46 @@ comprehensive but generally errs on including a kind of tool rather excluding it
 other words, it includes a lot of things that are not necessary and likely not worth
 getting to work for a basic Python project.
 
-Its configurations of testing and GitHub Actions for continuous integration (CI)
-support accessing PUDL tables stored as parquets on Google Cloud Storage which is the
-preferred way to access PUDL data when it needs to be part of CI. The CI side of this
-should 'just work' for any repository based on this template in rmi-electricity.
-Additional `setup <https://rmi.github.io/etoolbox/#setup>`__ is required for getting
-it to work locally.
-
 .. contents:: Table of Contents
    :depth: 2
 
 Getting Started
 =======================================================================================
 Please read this whole getting started section before beginning.
+
+Setup your development machine using uv
+---------------------------------------------------------------------------------------
+We recommend using `uv <https://github.com/astral-sh/uv>`__ to manage python
+installations, virtual environments, and packages instead of conda or mamba. If you
+don't have `uv <https://github.com/astral-sh/uv>`__ installed you can install it using
+homebrew with the instructions below. More information and alternative installation
+instructions `here <https://docs.astral.sh/uv/getting-started/installation/>`__.
+
+.. code-block:: zsh
+
+   brew install uv
+   uv python install 3.13
+   uv tool update-shell
+
+There are a number of development tools that we recommend using and installing globally
+using uv. That way they can be installed once and used by multiple projects. The
+instructions below assume these tools are installed as follows.
+
+.. code-block:: zsh
+
+   uv tool install tox --with tox-uv
+   uv tool install pre-commit
+   uv tool install ruff
+
+In the future, these tools can be upgraded by running ``uv tool upgrade --all``.
+
+.. Note::
+
+  In this repository we effectively disable uv's locking functionality by including
+  ``uv.lock`` in ``.gitignore``. This simplifies library development and dependabot.
+  See `the lockfile <https://docs.astral.sh/uv/concepts/projects/layout/#the-lockfile>`_
+  for information on this functionality. To use this feature as it was intended,
+  remove ``uv.lock`` from ``.gitignore``.
 
 Create a new repository from this template
 ---------------------------------------------------------------------------------------
@@ -63,20 +94,9 @@ Create a new repository from this template
   `managing releases <https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository>`__
   for more information.
 * Clone the new repository to your development machine.
-* Create the ``cheshire`` conda environment by running
-  ``conda env create -f environment.yml`` in the top level of the repository.
-* Activate the new conda environment with ``conda activate cheshire``.
-* If you intend to use PUDL data in your project, follow these
-  `setup instructions <https://rmi.github.io/etoolbox/#setup>`__. If not, delete these
-  three things (including the decorators above the latter two beginning with ``@``):
-
-  1. ``src/cheshire/dummy_pudl.py``,
-  2. the ``test_use_a_table_from_pudl`` test from ``tests/dummy_unit_test.py``
-
-* Run ``pre-commit install`` in the newly cloned repository to install the
-  `pre-commit hooks <https://pre-commit.com/>`__ defined in ``.pre-commit-config.yaml``.
-* Run ``tox`` from the top level of the repository to verify that everything is working
-  correctly.
+* Create the virtual environment by running ``uv sync --extra dev --extra doc`` in the top level of the repository.
+* Run ``pre-commit install`` in the newly cloned repository to install the `pre-commit hooks <https://pre-commit.com/>`__ defined in ``.pre-commit-config.yaml``.
+* Run ``tox`` from the top level of the repository to verify that everything is working correctly.
 
 
 Rename the package and distribution
@@ -92,22 +112,21 @@ a program, script, or notebook. E.g.:
   import cheshire
 
 The **distribution name** is the name that is used to install the software using a
-program like  ``pip`` or ``conda``. We are using the ``rmi`` namespace for the
+program like  ``pip`` or uv. We are using the ``rmi`` namespace for the
 packages that we publish, so the ``dispatch`` package would have the distribution
 name ``rmi.dispatch``. The distribution name is determined by the ``name`` argument
 under ``[project]`` in ``pyproject.toml``. See :pep:`423` for more on Python package
-naming conventions.
+naming conventions. You will want to search the ``pyproject.toml`` file and replace
+**all** references to ``cheshire`` with your package's name.
 
 The package and distribution names are used throughout the files in the template
 repository, and they all need to be replaced with the name of your new package.
 
 * Rename the ``src/cheshire`` directory to reflect the new package name.
-* Search for ``cheshire`` and replace it as appropriate everywhere. Sometimes
-  this will be with a distribution name like ``rmi.cheshire`` and sometimes this will be
-  the importable package name ``cheshire``. You can use ``grep -r`` to search
-  recursively through all of the files for the word ``cheshire`` at the command line,
-  or use the search-and-replace functionality of your IDE / text editor. (Global search
-  in PyCharm is command+shift+f)
+* Search for ``cheshire`` and replace it as appropriate everywhere.
+  Sometimes this will be with a distribution name like ``rmi.cheshire`` or ``rmi-cheshire`` and  sometimes this will be the importable package name ``cheshire``.
+  You can use ``grep -r`` to search recursively through all of the files for the word ``cheshire`` at the command line, or use the search-and-replace functionality of your IDE / text editor.
+  (Global search in PyCharm is command+shift+f)
 
 Now that everything is renamed, make sure all the renaming worked properly by running
 ``tox`` from the top level of the repository to verify that everything is working
@@ -140,9 +159,10 @@ Python Package Skeleton
 * Instructions for ``pip`` on how to install the package and configurations for a
   number of tools in ``pyproject.toml`` including the following:
 
-  * Package dependencies, including three sets of "extras" -- additional optional
+  * Package dependencies, including "extras" -- additional optional
     package dependencies that can be installed in special circumstances: ``dev``,
     ``doc```, and ``tests``.
+    Note: if you follow the instructions above and install ``ruff``, ``tox``, and ``pre-commit`` globally, you do not need to install the ``tests`` extras yourself.
   * The CLI deployed using a ``console_script`` entrypoint.
   * ``setuptools_scm`` to obtain the package's version directly from ``git`` tags.
   * What files (beyond the code in ``src/`` are included in or excluded from the package
@@ -164,17 +184,14 @@ Pytest Testing Framework
 
 Test Coordination with Tox
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-* We define several different test environments for use with Tox in ``tox.ini``
-* `Tox <https://tox.wiki/en/latest/>`__ is used to run pytest in an isolated Python
-  virtual environment.
+* We define several different test environments for use with Tox in ``pyproject.toml`` in the sections starting with ``[tool.tox``.
+* `Tox <https://tox.wiki/en/latest/>`__ is used to run pytest in an isolated Python virtual environment.
 * We also use Tox to coordinate running the code linters and building the documentation.
-* The default Tox environment is named ``ci`` and it will run the linters, build the
-  documentation, run all the tests, and generate test coverage statistics.
 
 Test Coverage
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-* We use Tox and the pytest `coverage <https://coverage.readthedocs.io>`__
-  plugin to measure and record what percentage of our codebase is being tested, and to
+* We use Tox, pytest, and `coverage <https://coverage.readthedocs.io>`__
+  to measure and record what percentage of our codebase is being tested, and to
   identify which modules, functions, and individual lines of code are not being
   exercised by the tests.
 * When you run ``tox`` a summary of the test coverage will be printed at the end of
@@ -222,7 +239,7 @@ included in the template ``.pre-commit-config.yaml``:
   * Upgrade type hints for built-in types
   * Upgrade Python syntax
 
-* We also have a custom hook that clears Jupyter notebook outputs prior to committing.
+* Clear outputs in Jupyter notebooks using `nbstripout <https://github.com/kynan/nbstripout>`_.
 
 To catch additional errors before commits are made, and to ensure uniform formatting
 across the codebase, we also use `ruff <https://github.com/charliermarsh/ruff>`__  as
@@ -261,7 +278,7 @@ Documentation Tools
 * Unless you're debugging something specific, the docs should always be built using
   ``tox -e docs`` as that will lint the source files using ``doc8`` and ``rstcheck``,
   and wipe previously generated documentation to build everything from scratch. The docs
-  are also rebuilt as part of the normal Tox run (equivalent to ``tox -e ci``).
+  are also rebuilt as part of the normal Tox run.
 
 Documentation Publishing
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -272,8 +289,7 @@ Documentation Publishing
 * To make the documentation available, go to the repositories settings. Select
   'Pages' under 'Code and automation', select 'Deploy from a branch' and then
   select the ``gh-pages`` branch and then ``/(root)``, and click save.
-* The documentation should then be available at
-  https://rmi-electricity.github.io/<repo-name>/.
+* The documentation should then be available at https://rmi-electricity.github.io/<repo-name>/.
 
 GitHub Automations
 ---------------------------------------------------------------------------------------
@@ -284,8 +300,7 @@ We use GitHub's `Dependabot <https://docs.github.com/en/code-security/dependabot
 to automatically update the allowable versions of packages we depend on. This applies
 to both the Python dependencies specified in ``pyproject.toml`` and to the versions of
 the `GitHub Actions <https://docs.github.com/en/actions>`__ that we employ. The
-dependabot behavior is configured in ``.github/dependabot.yml``. Unfortunately, it does
-not check or update ``environment.yml``, so that must be done manually.
+dependabot behavior is configured in ``.github/dependabot.yml``.
 
 For Dependabot's PRs to automatically get merged, your repository must have access to
 the correct organization secrets and the ``rmi-electricity auto-merge Bot`` GitHub App.
