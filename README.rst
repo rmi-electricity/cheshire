@@ -68,7 +68,7 @@ instructions below assume these tools are installed as follows.
 .. code-block:: zsh
 
    uv tool install tox --with tox-uv
-   uv tool install pre-commit
+   uv tool install pre-commit --with pre-commit-uv
    uv tool install ruff
 
 In the future, these tools can be upgraded by running ``uv tool upgrade --all``.
