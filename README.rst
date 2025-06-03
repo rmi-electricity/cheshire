@@ -2,8 +2,6 @@
 Cheshire: a Python Template Repository for RMI created by Catalyst Cooperative
 ***************************************************************************************
 
-.. readme-intro
-
 .. image:: https://github.com/rmi-electricity/cheshire/workflows/tox-pytest/badge.svg
    :target: https://github.com/rmi-electricity/cheshire/actions?query=workflow%3Atox-pytest
    :alt: Tox-PyTest Status
@@ -27,6 +25,11 @@ Cheshire: a Python Template Repository for RMI created by Catalyst Cooperative
     :target: https://github.com/astral-sh/uv
     :alt: uv
 
+.. contents::
+   :depth: 2
+
+.. readme-intro
+
 This template repository helps make new Python projects easier to set up and more
 uniform. It contains a lot of infrastructure surrounding a minimal Python package named
 ``cheshire`` (the cat who isn't entirely there...). This template is mostly a lightly
@@ -39,9 +42,6 @@ with reasonable configurations for a suite of common tools. It is by no means
 comprehensive but generally errs on including a kind of tool rather excluding it. In
 other words, it includes a lot of things that are not necessary and likely not worth
 getting to work for a basic Python project.
-
-.. contents:: Table of Contents
-   :depth: 2
 
 Getting Started
 =======================================================================================
