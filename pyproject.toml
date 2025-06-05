@@ -20,7 +20,7 @@ classifiers = [
 ]
 requires-python = ">=3.10,<3.14"
 dependencies = [
-    "pandas>=1.4,<2.3",
+    "pandas>=1.4,<2.4",
     # etoolbox provides a number of useful tools for working with data. It also includes
     # functions and infrastructure for accessing PUDL data stored on GCS so the sqlite
     # database is not requried
