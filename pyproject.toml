@@ -34,7 +34,7 @@ dev = [
     "pytest-console-scripts>=1.1,<1.5",  # Allow automatic testing of scripts
 ]
 doc = [
-    "doc8>=0.9,<1.2",  # Ensures clean documentation formatting
+    "doc8>=0.9,<2.1",  # Ensures clean documentation formatting
     "furo>=2023.09.10",  # A clean customisable Sphinx documentation theme.
     "rstcheck[sphinx,toml]>=5.0,<6.3",  # ReStructuredText linter
     "sphinx>=4,!=5.1.0,<8.2.4",
