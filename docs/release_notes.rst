@@ -2,10 +2,25 @@
 PACKAGE_NAME Release Notes
 =======================================================================================
 
+.. _release-v0-4-0:
+
+---------------------------------------------------------------------------------------
+0.4.0 (2025-06-24)
+---------------------------------------------------------------------------------------
+
+What's New?
+^^^^^^^^^^^
+* Switching recommended develop environment setup to uv, adapt structure of optional
+  dependencies to assume local global installation of tox, ruff, and pre-commit.
+* Adopt tox-uv.
+* Transition GitHub Actions to use uv and tox for CI testing and doc generation.
+* Move tox configuration to pyproject.toml.
+
+
 .. _release-v0-3-0:
 
 ---------------------------------------------------------------------------------------
-0.3.0 (2024-XX-XX)
+0.3.0 (2022-10-10)
 ---------------------------------------------------------------------------------------
 
 What's New?
