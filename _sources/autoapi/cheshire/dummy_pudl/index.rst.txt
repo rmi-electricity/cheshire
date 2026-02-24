@@ -1,0 +1,29 @@
+cheshire.dummy_pudl
+===================
+
+.. py:module:: cheshire.dummy_pudl
+
+.. autoapi-nested-parse::
+
+   Example of a module that contains functions for PUDL.
+
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   cheshire.dummy_pudl.use_a_table_from_pudl
+
+
+Module Contents
+---------------
+
+.. py:function:: use_a_table_from_pudl()
+
+   Use a table from the PUDL GCS bucket.
+
+   This is an example of a function that uses a table from PUDL.
+
+
