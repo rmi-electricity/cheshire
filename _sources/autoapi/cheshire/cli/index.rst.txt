@@ -1,0 +1,51 @@
+cheshire.cli
+============
+
+.. py:module:: cheshire.cli
+
+.. autoapi-nested-parse::
+
+   A skeleton of a command line interface to be deployed as an entry point script.
+
+   It takes two numbers and does something to them, printing out the result.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   cheshire.cli.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   cheshire.cli.parse_command_line
+   cheshire.cli.main
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: parse_command_line(argv)
+
+   Parse command line arguments. See the -h option for details.
+
+   :param argv: Command line arguments, including caller filename.
+   :type argv: str
+
+   :returns: Dictionary of command line arguments and their parsed values.
+   :rtype: dict
+
+
+.. py:function:: main()
+
+   Demonstrate a really basic command line interface (CLI) that takes arguments.
+
+
