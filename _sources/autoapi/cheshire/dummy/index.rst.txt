@@ -1,0 +1,37 @@
+cheshire.dummy
+==============
+
+.. py:module:: cheshire.dummy
+
+.. autoapi-nested-parse::
+
+   A dummy module so coverage has something to cover.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   cheshire.dummy.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   cheshire.dummy.do_something
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: do_something(a = 0, b = 0)
+
+   A dummy function that does something.
+
+
