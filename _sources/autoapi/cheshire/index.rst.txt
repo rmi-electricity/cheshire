@@ -1,0 +1,106 @@
+cheshire
+========
+
+.. py:module:: cheshire
+
+.. autoapi-nested-parse::
+
+   A template repository for a Python package.
+
+   Created by Catalyst Cooperative, modified by RMI.
+
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/cheshire/_version/index
+   /autoapi/cheshire/cli/index
+   /autoapi/cheshire/dummy/index
+   /autoapi/cheshire/dummy_pudl/index
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   cheshire.logger
+   cheshire.__author__
+   cheshire.__contact__
+   cheshire.__maintainer__
+   cheshire.__license__
+   cheshire.__maintainer_email__
+   cheshire.__docformat__
+   cheshire.__description__
+   cheshire.__long_description__
+   cheshire.__version__
+   cheshire.__projecturl__
+   cheshire.__downloadurl__
+
+
+Package Contents
+----------------
+
+.. py:data:: logger
+
+.. py:data:: __author__
+   :value: 'RMI'
+
+
+.. py:data:: __contact__
+   :value: '...@rmi.org'
+
+
+.. py:data:: __maintainer__
+   :value: 'Cheshire Cat'
+
+
+.. py:data:: __license__
+   :value: 'BSD 3-Clause License'
+
+
+.. py:data:: __maintainer_email__
+   :value: '...@rmi.org'
+
+
+.. py:data:: __docformat__
+   :value: 'restructuredtext en'
+
+
+.. py:data:: __description__
+   :value: 'A template for Python package repositories.'
+
+
+.. py:data:: __long_description__
+   :value: Multiline-String
+
+   .. raw:: html
+
+      <details><summary>Show Value</summary>
+
+   .. code-block:: python
+
+      """
+      This should be a paragraph long description of what the package does.
+      """
+
+   .. raw:: html
+
+      </details>
+
+
+
+.. py:data:: __version__
+
+.. py:data:: __projecturl__
+   :value: 'https://github.com/rmi-electricity/cheshire'
+
+
+.. py:data:: __downloadurl__
+   :value: 'https://github.com/rmi-electricity/cheshire'
+
+
